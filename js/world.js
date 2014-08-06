@@ -7,10 +7,11 @@ function World(game){
 
 	this.add(new Entity(
 		this.game,
-		document.getElementById('fireburst'),
-		100, 100,
-		0, 0,
-		30
+		document.getElementById('fireburst'), {
+			x: 100,
+			y: 100,
+			lumens: 30
+		}
 	));
 }
 World.prototype.add = function(entity){

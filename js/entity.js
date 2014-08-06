@@ -1,18 +1,16 @@
 'use strict';
 
-function Entity(game, image, x, y, angle, speed, lumens){
+function Entity(game, image, options){
 	this.game = game;
 	this.image = image;
 
-	this.x = x;
-	this.y = y;
-
-	this.angle = angle || 0;
-	this.speed = speed || 0;
-	this.dx = .05;
-	this.dy = 0;
-
-	this.lumens = lumens || 0;
+	this.x = options.x || 0;
+	this.y = options.y || 0;
+	this.angle = options.angle || 0;
+	this.speed = options.speed || 0;
+	this.dx = options.dx || .05;
+	this.dy = options.dx || 0;
+	this.lumens = options.lumens || 0;
 }
 Entity.prototype.updateDirection = function(){
 };
