@@ -10,7 +10,9 @@ function World(game){
 		document.getElementById('fireburst'), {
 			x: 100,
 			y: 100,
-			lumens: 30
+			lumens: 30,
+			angle: 0,
+			speed: 10
 		}
 	));
 }

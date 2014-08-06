@@ -8,15 +8,21 @@ function Entity(game, image, options){
 	this.y = options.y || 0;
 	this.angle = options.angle || 0;
 	this.speed = options.speed || 0;
-	this.dx = options.dx || .05;
+	this.dx = options.dx || 0;
 	this.dy = options.dx || 0;
 	this.lumens = options.lumens || 0;
+
+	if(options.dx === undefined && options.dy === undefined){
+		this.updateDirection();
+	}
 }
 Entity.prototype.updateDirection = function(){
+	this.dx = Math.cos(this.angle) * this.speed;
+	this.dy = Math.sin(this.angle) * this.speed;
 };
 Entity.prototype.update = function(delta){
-	this.x += this.dx * delta;
-	this.y += this.dy;
+	this.x += this.dx * delta / 1000;
+	this.y += this.dy * delta / 1000;
 };
 Entity.prototype.light = function(canvas, ctx){
 	if(this.lumens > 0){
@@ -28,11 +34,15 @@ Entity.prototype.render = function(canvas, ctx, angle){
 	angle = angle || this.angle;
 	ctx.save();
 	ctx.translate(
-		this.x - this.image.width/2,
-		this.y - this.image.height/2
+		this.x,
+		this.y
 	)
 	ctx.rotate(angle);
-	ctx.drawImage(this.image, 0, 0);
+	ctx.drawImage(
+		this.image, 
+		-this.image.width/2,
+		-this.image.height/2
+	);
 	ctx.restore();
 };
 
