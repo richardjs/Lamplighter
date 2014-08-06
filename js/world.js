@@ -7,9 +7,9 @@ function World(game){
 
 	this.add(new Entity(
 		this.game,
-		document.getElementById('fireburst'), {
-			x: 100,
-			y: 100,
+		document.getElementById('fireburstImage'), {
+			x: 0,
+			y: -50,
 			lumens: 30,
 			angle: 0,
 			speed: 10
@@ -32,17 +32,34 @@ World.prototype.update = function(delta){
 World.prototype.render = function(canvas, ctx){
 	ctx.save();
 
+	// Fill with black
 	ctx.fillStyle = '#000';
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+	// Translate to put player in the center of the canvas
+	ctx.translate(
+		this.game.canvas.width/2 - this.game.player.x,
+		this.game.canvas.height/2 - this.game.player.y
+	);
+
+	// Clip to lighted areas
 	ctx.beginPath();
 	this.entities.forEach(function(entity){
 		entity.light(canvas, ctx);
 	});
 	ctx.clip();
 
+	// Draw the lit background
+	// Since we're translated, we need the left and top values
+	// player's to the player's position
 	ctx.fillStyle = '#001a00';
-	ctx.fillRect(0, 0, canvas.width, canvas.height);
+	ctx.fillRect(
+		this.game.player.x - this.game.canvas.width/2,
+		this.game.player.y - this.game.canvas.height/2,
+		canvas.width,
+		canvas.height
+	);
+	// Render entities
 	this.entities.forEach(function(entity){
 		entity.render(canvas, ctx);
 	});

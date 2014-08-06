@@ -13,6 +13,8 @@ function Game(canvas){
 	this.ctx = canvas.getContext('2d');
 
 	this.world = new World(this);
+	this.player = new Player(this);
+	this.world.add(this.player);
 
 	var lastTime = 0;
 	var fpsTime = 0;
