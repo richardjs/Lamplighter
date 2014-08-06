@@ -8,7 +8,9 @@ function World(game){
 	this.add(new Entity(
 		this.game,
 		document.getElementById('fireburst'),
-		100, 100
+		100, 100,
+		0, 0,
+		30
 	));
 }
 World.prototype.add = function(entity){
@@ -34,7 +36,7 @@ World.prototype.render = function(canvas, ctx){
 	this.entities.forEach(function(entity){
 		entity.light(canvas, ctx);
 	});
-	//ctx.clip();
+	ctx.clip();
 
 	ctx.fillStyle = '#001a00';
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
