@@ -5,15 +5,8 @@ function World(game){
 
 	this.entities = [];
 
-	this.add(new Entity(
-		this.game,
-		document.getElementById('fireburstImage'), {
-			x: 0,
-			y: -50,
-			lumens: 30,
-			angle: 0,
-			speed: 0
-		}
+	this.add(new Flare(
+		this, 0, -50, 0, 0, 30
 	));
 }
 World.prototype.add = function(entity){
