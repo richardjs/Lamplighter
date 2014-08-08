@@ -11,6 +11,21 @@ function Flare(game, x, y, angle, speed, lumens, ttl){
 		lumens: lumens
 	});
 	this.ttl = ttl;
+
+	this.imageAngle = 0;
+	this.imageRotateSpeed = Math.PI * FLARE_MAX_ROTATE_SPEED * Math.random();
+	if(Math.random() < .5){
+		this.imageRotateSpeed *= -1;
+	}
 }
 Flare.prototype = Object.create(Entity.prototype);
 Flare.prototype.constructor = Flare;
+Flare.prototype.update = function(delta){
+	Entity.prototype.update.call(this, delta);
+	this.imageAngle += this.imageRotateSpeed * delta / 1000;
+}
+Flare.prototype.render = function(canvas, ctx){
+	Entity.prototype.render.call(
+		this, canvas, ctx, this.imageAngle
+	);
+};
