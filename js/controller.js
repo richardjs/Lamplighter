@@ -9,7 +9,6 @@ function Controller(game){
 	}.bind(this));
 
 	document.addEventListener('keydown', function(event){
-		event.preventDefault();
 		var c = String.fromCharCode(event.keyCode);
 		switch(c){
 			case 'W':
@@ -24,11 +23,13 @@ function Controller(game){
 			case 'D':
 				this.game.player.dx = PLAYER_SPEED;
 				break;
+			default:
+				return;
 		}
+		event.preventDefault();
 	}.bind(this));
 
 	document.addEventListener('keyup', function(event){
-		event.preventDefault();
 		var c = String.fromCharCode(event.keyCode);
 		switch(c){
 			case 'W':
@@ -51,6 +52,9 @@ function Controller(game){
 					this.game.player.dx = 0;
 				}
 				break;
+			default:
+				return;
 		}
+		event.preventDefault();
 	}.bind(this));
 }
