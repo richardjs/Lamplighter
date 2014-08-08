@@ -6,7 +6,7 @@ function Player(game){
 	Entity.call(this, game, playerImage, {
 		x: 0,
 		y: 0,
-		lumens: 65
+		lumens: PLAYER_LUMENS
 	});
 }
 Player.prototype = Object.create(Entity.prototype);
