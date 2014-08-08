@@ -12,7 +12,7 @@ function World(game){
 			y: -50,
 			lumens: 30,
 			angle: 0,
-			speed: 10
+			speed: 0
 		}
 	));
 }
