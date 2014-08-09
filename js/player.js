@@ -23,3 +23,12 @@ Player.prototype.shootFlame = function(){
 		FLAME_TTL
 	), 'playerWeapons');
 };
+Player.prototype.shootFireball = function(targetX, targetY){
+	this.game.world.add(new Fireball(
+		this.game,
+		this.x,
+		this.y,
+		targetX,
+		targetY
+	));
+}

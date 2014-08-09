@@ -7,6 +7,8 @@ function Controller(game){
 	this.flameTimer = 0;
 	this.flameOn = false;
 
+	this.fireballTimer = 0;
+
 	document.addEventListener('mousemove', function(event){
 		this.game.player.angle = Math.atan2(
 			event.pageY - this.game.canvas.height/2,
@@ -17,10 +19,29 @@ function Controller(game){
 	}.bind(this));
 
 	document.addEventListener('mousedown', function(event){
-		this.flameOn = true;
+		switch(event.button){
+			case 0:
+				this.flameOn = true;
+				break
+			case 2:
+				if(this.fireballTimer <= 0){
+					this.game.player.shootFireball(
+						event.pageX - this.game.canvas.width/2 + this.game.player.x,
+						event.pageY - this.game.canvas.height/2 + this.game.player.y
+					);
+					this.fireballTimer = FIREBALL_DELAY;
+				}
+				break;
+		}
 	}.bind(this));
 	document.addEventListener('mouseup', function(event){
-		this.flameOn = false;
+		if(event.button == 0){
+			this.flameOn = false;
+		}
+	}.bind(this));
+
+	document.addEventListener('contextmenu', function(event){
+		event.preventDefault();
 	}.bind(this));
 
 	document.addEventListener('keydown', function(event){
@@ -80,5 +101,9 @@ Controller.prototype.update = function(delta){
 	if(this.flameOn && this.flameTimer <= 0){
 		this.game.player.shootFlame();
 		this.flameTimer = FLAME_DELAY;
+	}
+
+	if(this.fireballTimer > 0){
+		this.fireballTimer -= delta;
 	}
 };
