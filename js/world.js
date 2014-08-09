@@ -5,8 +5,7 @@ function World(game){
 
 	this.entities = [];
 
-	//this.add(new Bush(this, 0, -50));
-
+	// Scatter bushes around the world (stub)
 	for(var i = 0; i < 200; i++){
 		var x = Math.random()*4000 - 2000;
 		var y = Math.random()*4000 - 2000;
