@@ -23,10 +23,12 @@ Flare.prototype.constructor = Flare;
 Flare.prototype.update = function(delta){
 	Entity.prototype.update.call(this, delta);
 	this.imageAngle += this.imageRotateSpeed * delta / 1000;
-
-	this.ttl -= delta;
-	if(this.ttl < 0){
-		this.game.world.remove(this);
+	
+	if(this.ttl !== null){
+		this.ttl -= delta;
+		if(this.ttl < 0){
+			this.game.world.remove(this);
+		}
 	}
 }
 Flare.prototype.render = function(canvas, ctx){

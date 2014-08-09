@@ -11,6 +11,7 @@ function Entity(game, image, options){
 	this.dx = options.dx || 0;
 	this.dy = options.dx || 0;
 	this.lumens = options.lumens || 0;
+	this.collideRadius = options.collideRadius || this.image.width/2;
 
 	if(options.dx === undefined && options.dy === undefined){
 		this.updateDirection();
@@ -45,4 +46,13 @@ Entity.prototype.render = function(canvas, ctx, angle){
 	);
 	ctx.restore();
 };
-
+Entity.prototype.collideTest = function(other){
+	var collideDistance = this.collideRadius + other.collideRadius;
+	if(Math.abs(this.x - other.x) >= collideDistance){
+		return false;
+	}
+	if(Math.abs(this.y - other.y) >= collideDistance){
+		return false;
+	}
+	return true;
+}

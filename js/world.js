@@ -3,13 +3,16 @@
 function World(game){
 	this.game = game;
 
-	this.entities = {};
+	this.entities = {
+		'playerWeapons': [],
+		'bushes': []
+	};
 
 	// Scatter bushes around the world (stub)
-	for(var i = 0; i < 200; i++){
+	for(var i = 0; i < 300; i++){
 		var x = Math.random()*4000 - 2000;
 		var y = Math.random()*4000 - 2000;
-		this.add(new Bush(this, x, y));
+		this.add(new Bush(this.game, x, y), 'bushes');
 	}
 }
 World.prototype.add = function(entity, group){

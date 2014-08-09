@@ -16,6 +16,7 @@ function Game(canvas){
 	this.player = new Player(this);
 	this.world.add(this.player);
 	this.controller = new Controller(this);
+	this.collider = new Collider(this);
 
 	var lastTime = 0;
 	var fpsTime = 0;
@@ -27,6 +28,7 @@ function Game(canvas){
 
 		game.world.update(delta);
 		game.controller.update(delta);
+		game.collider.update(delta);
 
 		game.world.render(game.canvas, game.ctx);
 
