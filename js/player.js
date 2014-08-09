@@ -21,5 +21,5 @@ Player.prototype.shootFlame = function(){
 		FLAME_SPEED,
 		FLAME_LUMENS,
 		FLAME_TTL
-	));
+	), 'playerWeapons');
 };

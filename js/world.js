@@ -17,8 +17,10 @@ World.prototype.add = function(entity, group){
 		this.entities[group] = [];
 	}
 	this.entities[group].push(entity);
+	entity.group = group;
 };
 World.prototype.remove = function(entity, group){
+	group = group || entity.group;
 	var index = this.entities[group].indexOf(entity);
 	if(index >= 0){
 		this.entities[group].splice(index, 1);
