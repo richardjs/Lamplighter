@@ -26,6 +26,8 @@ function Game(canvas){
 		lastTime = time;
 
 		game.world.update(delta);
+		game.controller.update(delta);
+
 		game.world.render(game.canvas, game.ctx);
 
 		fpsThisSecond++;

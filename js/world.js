@@ -4,16 +4,16 @@ function World(game){
 	this.game = game;
 
 	this.entities = [];
-
-	this.add(new Flare(
-		this, 0, -50, 0, 0, 30
-	));
 }
-World.prototype.add = function(entity){
-	this.entities.push(entity);
+World.prototype.add = function(entity, at_front){
+	if(at_front){
+		this.entities.unshift(entity);
+	}else{
+		this.entities.push(entity);
+	}
 };
 World.prototype.remove = function(entity){
-	this.entites.splice(
+	this.entities.splice(
 		this.entities.indexOf(entity), 1
 	);
 };

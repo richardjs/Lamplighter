@@ -1,11 +1,26 @@
 function Controller(game){
 	this.game = game;
 
+	this.mouseX = 0;
+	this.mouseY = 0;
+
+	this.flameTimer = 0;
+	this.flameOn = false;
+
 	document.addEventListener('mousemove', function(event){
 		this.game.player.angle = Math.atan2(
 			event.pageY - this.game.canvas.height/2,
 			event.pageX - this.game.canvas.width/2
 		);
+		this.mouseX = event.pageX;
+		this.mouseY = event.pageY;
+	}.bind(this));
+
+	document.addEventListener('mousedown', function(event){
+		this.flameOn = true;
+	}.bind(this));
+	document.addEventListener('mouseup', function(event){
+		this.flameOn = false;
 	}.bind(this));
 
 	document.addEventListener('keydown', function(event){
@@ -58,3 +73,12 @@ function Controller(game){
 		event.preventDefault();
 	}.bind(this));
 }
+Controller.prototype.update = function(delta){
+	if(this.flameTimer > 0){
+		this.flameTimer -= delta;
+	}
+	if(this.flameOn && this.flameTimer <= 0){
+		this.game.player.shootFlame();
+		this.flameTimer = FLAME_DELAY;
+	}
+};

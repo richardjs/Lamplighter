@@ -11,3 +11,14 @@ function Player(game){
 }
 Player.prototype = Object.create(Entity.prototype);
 Player.prototype.constructor = Player;
+Player.prototype.shootFlame = function(){
+	this.game.world.add(new Flare(
+		this.game,
+		this.x,
+		this.y,
+		this.angle,
+		FLAME_SPEED,
+		FLAME_LUMENS,
+		FLAME_TTL
+	), true);
+};
