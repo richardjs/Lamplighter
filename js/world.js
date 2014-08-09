@@ -3,7 +3,7 @@
 function World(game){
 	this.game = game;
 
-	this.entities = [];
+	this.entities = {};
 
 	// Scatter bushes around the world (stub)
 	for(var i = 0; i < 200; i++){
@@ -12,22 +12,24 @@ function World(game){
 		this.add(new Bush(this, x, y));
 	}
 }
-World.prototype.add = function(entity, at_front){
-	if(at_front){
-		this.entities.unshift(entity);
-	}else{
-		this.entities.push(entity);
+World.prototype.add = function(entity, group){
+	if(!(group in this.entities)){
+		this.entities[group] = [];
+	}
+	this.entities[group].push(entity);
+};
+World.prototype.remove = function(entity, group){
+	var index = this.entities[group].indexOf(entity);
+	if(index >= 0){
+		this.entities[group].splice(index, 1);
 	}
 };
-World.prototype.remove = function(entity){
-	this.entities.splice(
-		this.entities.indexOf(entity), 1
-	);
-};
 World.prototype.update = function(delta){
-	this.entities.forEach(function(entity){
-		entity.update(delta);
-	});
+	Object.keys(this.entities).forEach(function(group){
+		this.entities[group].forEach(function(entity){
+			entity.update(delta);
+		});
+	}.bind(this));
 };
 World.prototype.render = function(canvas, ctx){
 	ctx.save();
@@ -44,9 +46,11 @@ World.prototype.render = function(canvas, ctx){
 
 	// Clip to lighted areas
 	ctx.beginPath();
-	this.entities.forEach(function(entity){
-		entity.light(canvas, ctx);
-	});
+	Object.keys(this.entities).forEach(function(group){
+		this.entities[group].forEach(function(entity){
+			entity.light(canvas, ctx);
+		});
+	}.bind(this));
 	ctx.clip();
 
 	// Draw the lit background
@@ -60,9 +64,11 @@ World.prototype.render = function(canvas, ctx){
 		canvas.height
 	);
 	// Render entities
-	this.entities.forEach(function(entity){
-		entity.render(canvas, ctx);
-	});
+	Object.keys(this.entities).forEach(function(group){
+		this.entities[group].forEach(function(entity){
+			entity.render(canvas, ctx);
+		});
+	}.bind(this));
 
 	ctx.restore();
 }
