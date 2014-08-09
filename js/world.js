@@ -68,6 +68,15 @@ World.prototype.render = function(canvas, ctx){
 		canvas.width,
 		canvas.height
 	);
+
+	// Stub road experiments
+	ctx.strokeStyle = '#322';
+	ctx.lineWidth = 25;
+	ctx.beginPath();
+	ctx.moveTo(0, 0);
+	ctx.lineTo(2000, 650);
+	ctx.stroke();
+
 	// Render entities
 	Object.keys(this.entities).forEach(function(group){
 		this.entities[group].forEach(function(entity){
