@@ -5,7 +5,13 @@ function World(game){
 
 	this.entities = [];
 
-	this.add(new Bush(this, 0, -50));
+	//this.add(new Bush(this, 0, -50));
+
+	for(var i = 0; i < 200; i++){
+		var x = Math.random()*4000 - 2000;
+		var y = Math.random()*4000 - 2000;
+		this.add(new Bush(this, x, y));
+	}
 }
 World.prototype.add = function(entity, at_front){
 	if(at_front){
