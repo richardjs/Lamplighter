@@ -12,11 +12,12 @@ function Player(game){
 Player.prototype = Object.create(Entity.prototype);
 Player.prototype.constructor = Player;
 Player.prototype.shootFlame = function(){
+	var spread = Math.random()*FLAME_SPREAD - FLAME_SPREAD/2;
 	this.game.world.add(new Flare(
 		this.game,
 		this.x,
 		this.y,
-		this.angle,
+		this.angle + spread,
 		FLAME_SPEED,
 		FLAME_LUMENS,
 		FLAME_TTL
