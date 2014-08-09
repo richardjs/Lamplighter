@@ -4,6 +4,8 @@ function World(game){
 	this.game = game;
 
 	this.entities = [];
+
+	this.add(new Bush(this, 0, -50));
 }
 World.prototype.add = function(entity, at_front){
 	if(at_front){
