@@ -16,7 +16,15 @@ function World(game){
 		this.add(new Bush(this.game, x, y), 'bushes');
 	}
 
-	this.add(new Lampstand(this.game, 1000, 1000), 'lamps');
+	// Add lampstands
+	var angle = Math.PI*2 * Math.random();
+	for(var i = 0; i < 7; i++){
+		var distance = (LAMPSTAND_MAX_DISTANCE - LAMPSTAND_MIN_DISTANCE)*Math.random() + LAMPSTAND_MIN_DISTANCE;
+		var x = Math.sin(angle) * distance;
+		var y = Math.cos(angle) * distance;
+		this.add(new Lampstand(this.game, x, y), 'lamps');
+		angle += (Math.PI*2)/7;
+	}
 }
 World.prototype.add = function(entity, group){
 	if(!(group in this.entities)){
