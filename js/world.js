@@ -4,8 +4,9 @@ function World(game){
 	this.game = game;
 
 	this.entities = {
-		'playerWeapons': [],
-		'bushes': []
+		'lamps': [],
+		'bushes': [],
+		'playerWeapons': []
 	};
 
 	// Scatter bushes around the world (stub)
@@ -14,6 +15,8 @@ function World(game){
 		var y = Math.random()*4000 - 2000;
 		this.add(new Bush(this.game, x, y), 'bushes');
 	}
+
+	this.add(new Lampstand(this.game, 1000, 1000), 'lamps');
 }
 World.prototype.add = function(entity, group){
 	if(!(group in this.entities)){
@@ -68,14 +71,6 @@ World.prototype.render = function(canvas, ctx){
 		canvas.width,
 		canvas.height
 	);
-
-	// Stub road experiments
-	ctx.strokeStyle = '#322';
-	ctx.lineWidth = 25;
-	ctx.beginPath();
-	ctx.moveTo(0, 0);
-	ctx.lineTo(2000, 650);
-	ctx.stroke();
 
 	// Render entities
 	Object.keys(this.entities).forEach(function(group){

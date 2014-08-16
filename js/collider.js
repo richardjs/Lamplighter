@@ -13,5 +13,12 @@ Collider.prototype.update = function(delta){
 				}
 			}
 		});
+		this.entities['lamps'].forEach(function(lamp){
+			if(weapon.collideTest(lamp)){
+				if(!lamp.onFire){
+					lamp.setOnFire();
+				}
+			}
+		});
 	}.bind(this));
 }
