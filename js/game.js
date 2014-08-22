@@ -14,9 +14,10 @@ function Game(canvas){
 
 	this.world = new World(this);
 	this.player = new Player(this);
-	this.world.add(this.player);
+	this.world.add(this.player, 'player');
 	this.controller = new Controller(this);
 	this.collider = new Collider(this);
+	this.spawner = new Spawner(this);
 
 	var lastTime = 0;
 	var fpsTime = 0;
@@ -29,6 +30,7 @@ function Game(canvas){
 		game.world.update(delta);
 		game.controller.update(delta);
 		game.collider.update(delta);
+		game.spawner.update(delta);
 
 		game.world.render(game.canvas, game.ctx);
 

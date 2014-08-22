@@ -6,7 +6,9 @@ function World(game){
 	this.entities = {
 		'lamps': [],
 		'bushes': [],
-		'playerWeapons': []
+		'playerWeapons': [],
+		'player': [],
+		'blobs': []
 	};
 
 	// Scatter bushes around the world (stub)

@@ -31,14 +31,16 @@ Entity.prototype.light = function(canvas, ctx){
 		ctx.arc(this.x, this.y, this.lumens, 0, Math.PI*2);
 	}
 };
-Entity.prototype.render = function(canvas, ctx, angle){
+Entity.prototype.render = function(canvas, ctx, angle, scale){
 	angle = angle || this.angle;
+	scale = scale || 1;
 	ctx.save();
 	ctx.translate(
 		this.x,
 		this.y
 	)
 	ctx.rotate(angle);
+	ctx.scale(scale, scale);
 	ctx.drawImage(
 		this.image, 
 		-this.image.width/2,
