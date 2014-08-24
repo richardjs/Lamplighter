@@ -56,5 +56,6 @@ Entity.prototype.collideTest = function(other){
 	if(Math.abs(this.y - other.y) >= collideDistance){
 		return false;
 	}
-	return true;
+	var distance = Math.sqrt(Math.pow(this.x - other.x, 2) + Math.pow(this.y - other.y, 2));
+	return distance < collideDistance;
 }
