@@ -8,7 +8,8 @@ function Player(game){
 	Entity.call(this, game, playerImage, {
 		x: 0,
 		y: 0,
-		lumens: PLAYER_LUMENS
+		lumens: PLAYER_LUMENS,
+		collideRadius: PLAYER_COLLIDE_RADIUS
 	});
 }
 Player.prototype = Object.create(Entity.prototype);

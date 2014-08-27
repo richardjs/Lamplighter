@@ -11,8 +11,9 @@ function Blob(game, x, y){
 		collideRadius: this.size/2
 	});
 
-	this.imageScale = this.size / this.image.width;
+	this.stuck = false;
 
+	this.imageScale = this.size / this.image.width;
 
 	this.imageAngle = 0;
 	this.imageRotateSpeed = Math.PI * BLOB_MAX_ROTATE_SPEED * Math.random();
@@ -24,14 +25,19 @@ function Blob(game, x, y){
 Blob.prototype = Object.create(Entity.prototype);
 Blob.prototype.constructor = Blob;
 Blob.prototype.update = function(delta){
-	Entity.prototype.update.call(this, delta);
-	this.imageAngle += this.imageRotateSpeed * delta / 1000;
+	if(!this.stuck){
+		Entity.prototype.update.call(this, delta);
+		this.imageAngle += this.imageRotateSpeed * delta / 1000;
 
-	this.angle = Math.atan2(
-		this.game.player.y - this.y,
-		this.game.player.x - this.x
-	);
-	this.updateDirection();
+		this.angle = Math.atan2(
+			this.game.player.y - this.y,
+			this.game.player.x - this.x
+		);
+		this.updateDirection();
+	}else{
+		this.x = this.game.player.x;
+		this.y = this.game.player.y;
+	}
 }
 Blob.prototype.render = function(canvas, ctx){
 	Entity.prototype.render.call(
@@ -40,4 +46,7 @@ Blob.prototype.render = function(canvas, ctx){
 }
 Blob.prototype.explode = function(){
 	this.game.world.remove(this);
+}
+Blob.prototype.stick = function(){
+	this.stuck = true;
 }

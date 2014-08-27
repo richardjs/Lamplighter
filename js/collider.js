@@ -6,7 +6,7 @@ function Collider(game){
 }
 Collider.prototype.update = function(delta){
 	this.entities.playerWeapons.forEach(function(weapon){
-		this.entities['bushes'].forEach(function(bush){
+		this.entities.bushes.forEach(function(bush){
 			if(weapon.collideTest(bush)){
 				if(!bush.onFire){
 					bush.setOnFire();
@@ -26,5 +26,13 @@ Collider.prototype.update = function(delta){
 				blob.explode();
 			}
 		}.bind(this));
+	}.bind(this));
+
+	this.entities.blobs.forEach(function(blob){
+		if(!blob.stuck){
+			if(blob.collideTest(this.game.player)){
+				blob.stick();
+			}
+		}
 	}.bind(this));
 }
