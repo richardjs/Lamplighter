@@ -50,4 +50,5 @@ Lampstand.prototype.render = function(canvas, ctx){
 Lampstand.prototype.setOnFire = function(){
 	this.onFire = true;
 	this.image = LAMPSTAND_LIT_IMAGE;
+	this.game.player.levelUp();
 }

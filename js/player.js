@@ -3,6 +3,8 @@
 var playerImage = document.getElementById('playerImage');
 
 function Player(game){
+	this.level = 0;
+	setPlayerLevel(this.level);
 	Entity.call(this, game, playerImage, {
 		x: 0,
 		y: 0,
@@ -31,4 +33,9 @@ Player.prototype.shootFireball = function(targetX, targetY){
 		targetX,
 		targetY
 	));
+}
+Player.prototype.levelUp = function(){
+	this.level++;
+	setPlayerLevel(this.level);
+	this.lumens = PLAYER_LUMENS;
 }
