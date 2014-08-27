@@ -32,6 +32,15 @@ Collider.prototype.update = function(delta){
 		if(!blob.stuck){
 			if(blob.collideTest(this.game.player)){
 				blob.stick();
+				this.game.player.hurt();
+			}
+		}
+	}.bind(this));
+
+	this.entities.lamps.forEach(function(lamp){
+		if(lamp.onFire){
+			if(lamp.collideTest(this.game.player)){
+				this.game.player.recover();
 			}
 		}
 	}.bind(this));

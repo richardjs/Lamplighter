@@ -209,5 +209,10 @@ function setPlayerLevel(level){
 			BLOB_DO_SPAWN = true;
 
 			break;
+
+		case -1:
+			PLAYER_LUMENS = 35;
+
+			break;
 	}
 }
