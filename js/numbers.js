@@ -50,8 +50,12 @@ var BLOB_DO_SPAWN = true;
 var FREEZER_DELAY = 1000;
 var FREEZER_MARGIN = 100; // Added to half screen width or height
 
+var currentLevel = null;
 function setPlayerLevel(level){
 	switch(level){
+		if(level > 6){
+			level = 6;
+		}
 		case 0:
 			PLAYER_LUMENS = 45;
 
@@ -69,7 +73,9 @@ function setPlayerLevel(level){
 			FIREBALL_FLARES_LUMENS = 30;
 			FIREBALL_FLARES_MAX_TTL = 500;
 
-			BLOB_DO_SPAWN = false;
+			if(currentLevel === null){
+				BLOB_DO_SPAWN = false;
+			}
 
 			break;
 
@@ -90,9 +96,11 @@ function setPlayerLevel(level){
 			FIREBALL_FLARES_LUMENS = 30;
 			FIREBALL_FLARES_MAX_TTL = 600;
 
-			BLOB_SPAWN_MAX_DELAY = 3500;
-			BLOB_SPAWN_MIN_DELAY = 1000;
-			BLOB_DO_SPAWN = true;
+			if(currentLevel < 1){
+				BLOB_SPAWN_MAX_DELAY = 3500;
+				BLOB_SPAWN_MIN_DELAY = 1000;
+				BLOB_DO_SPAWN = true;
+			}
 
 			break;
 
@@ -113,9 +121,11 @@ function setPlayerLevel(level){
 			FIREBALL_FLARES_LUMENS = 30;
 			FIREBALL_FLARES_MAX_TTL = 650;
 
-			BLOB_SPAWN_MAX_DELAY = 3000;
-			BLOB_SPAWN_MIN_DELAY = 750;
-			BLOB_DO_SPAWN = true;
+			if(currentLevel < 2){
+				BLOB_SPAWN_MAX_DELAY = 3000;
+				BLOB_SPAWN_MIN_DELAY = 750;
+				BLOB_DO_SPAWN = true;
+			}
 
 			break;
 
@@ -136,9 +146,11 @@ function setPlayerLevel(level){
 			FIREBALL_FLARES_LUMENS = 30;
 			FIREBALL_FLARES_MAX_TTL = 750;
 
-			BLOB_SPAWN_MAX_DELAY = 2500;
-			BLOB_SPAWN_MIN_DELAY = 500;
-			BLOB_DO_SPAWN = true;
+			if(currentLevel < 3){
+				BLOB_SPAWN_MAX_DELAY = 2500;
+				BLOB_SPAWN_MIN_DELAY = 500;
+				BLOB_DO_SPAWN = true;
+			}
 
 			break;
 
@@ -159,9 +171,11 @@ function setPlayerLevel(level){
 			FIREBALL_FLARES_LUMENS = 30;
 			FIREBALL_FLARES_MAX_TTL = 1000;
 
-			BLOB_SPAWN_MAX_DELAY = 2000;
-			BLOB_SPAWN_MIN_DELAY = 500;
-			BLOB_DO_SPAWN = true;
+			if(currentLevel < 4){
+				BLOB_SPAWN_MAX_DELAY = 2000;
+				BLOB_SPAWN_MIN_DELAY = 500;
+				BLOB_DO_SPAWN = true;
+			}
 
 			break;
 
@@ -182,9 +196,11 @@ function setPlayerLevel(level){
 			FIREBALL_FLARES_LUMENS = 30;
 			FIREBALL_FLARES_MAX_TTL = 1000;
 
-			BLOB_SPAWN_MAX_DELAY = 1500;
-			BLOB_SPAWN_MIN_DELAY = 250;
-			BLOB_DO_SPAWN = true;
+			if(currentLevel < 5){
+				BLOB_SPAWN_MAX_DELAY = 1500;
+				BLOB_SPAWN_MIN_DELAY = 250;
+				BLOB_DO_SPAWN = true;
+			}
 
 			break;
 
@@ -205,9 +221,11 @@ function setPlayerLevel(level){
 			FIREBALL_FLARES_LUMENS = 50;
 			FIREBALL_FLARES_MAX_TTL = 1500;
 
-			BLOB_SPAWN_MAX_DELAY = 500;
-			BLOB_SPAWN_MIN_DISTANCE = 200;
-			BLOB_DO_SPAWN = true;
+			if(currentLevel < 6){
+				BLOB_SPAWN_MAX_DELAY = 500;
+				BLOB_SPAWN_MIN_DISTANCE = 200;
+				BLOB_DO_SPAWN = true;
+			}
 
 			break;
 
@@ -216,4 +234,5 @@ function setPlayerLevel(level){
 
 			break;
 	}
+	currentLevel = level;
 }
