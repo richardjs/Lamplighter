@@ -52,10 +52,10 @@ var FREEZER_MARGIN = 100; // Added to half screen width or height
 
 var currentLevel = null;
 function setPlayerLevel(level){
+	if(level > 6){
+		level = 6;
+	}
 	switch(level){
-		if(level > 6){
-			level = 6;
-		}
 		case 0:
 			PLAYER_LUMENS = 45;
 
