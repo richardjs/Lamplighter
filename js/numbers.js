@@ -147,7 +147,7 @@ function setPlayerLevel(level){
 			FIREBALL_FLARES_MAX_TTL = 750;
 
 			if(currentLevel < 3){
-				BLOB_SPAWN_MAX_DELAY = 2500;
+				BLOB_SPAWN_MAX_DELAY = 2225;
 				BLOB_SPAWN_MIN_DELAY = 500;
 				BLOB_DO_SPAWN = true;
 			}
@@ -172,7 +172,7 @@ function setPlayerLevel(level){
 			FIREBALL_FLARES_MAX_TTL = 1000;
 
 			if(currentLevel < 4){
-				BLOB_SPAWN_MAX_DELAY = 2000;
+				BLOB_SPAWN_MAX_DELAY = 1500;
 				BLOB_SPAWN_MIN_DELAY = 500;
 				BLOB_DO_SPAWN = true;
 			}
@@ -197,7 +197,7 @@ function setPlayerLevel(level){
 			FIREBALL_FLARES_MAX_TTL = 1000;
 
 			if(currentLevel < 5){
-				BLOB_SPAWN_MAX_DELAY = 1500;
+				BLOB_SPAWN_MAX_DELAY = 1000;
 				BLOB_SPAWN_MIN_DELAY = 250;
 				BLOB_DO_SPAWN = true;
 			}
@@ -223,7 +223,7 @@ function setPlayerLevel(level){
 
 			if(currentLevel < 6){
 				BLOB_SPAWN_MAX_DELAY = 500;
-				BLOB_SPAWN_MIN_DISTANCE = 200;
+				BLOB_SPAWN_MIN_DELAY = 100;
 				BLOB_DO_SPAWN = true;
 			}
 
