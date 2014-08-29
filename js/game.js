@@ -41,6 +41,34 @@ function Game(canvas){
 
 		game.world.render(game.canvas, game.ctx);
 
+		game.ctx.fillStyle = '#999';
+		game.ctx.font = '12pt arial';
+		game.ctx.fillText(
+			'Level: ' + game.player.level,
+			10,
+			game.canvas.height - 40
+		);
+		if(game.player.damage > game.player.level){
+			game.ctx.fillStyle = '#a44';
+			game.ctx.font = '14pt arial';
+			game.ctx.fillText(
+				'Return to a lit lamp to recover.',
+				10, game.canvas.height - 57
+			);
+		}
+		game.ctx.font = '10pt arial';
+		game.ctx.fillText(
+			'Damage: ' + game.player.damage,
+			10,
+			game.canvas.height - 25
+		);
+		game.ctx.fillStyle = '#999';
+		game.ctx.fillText(
+			'Lamps remaining: ' + (7 - game.player.level),
+			10,
+			game.canvas.height - 10
+		);
+
 		if(DEBUG){
 			fpsThisSecond++;
 			fpsTime += delta;
@@ -67,6 +95,8 @@ function Game(canvas){
 		window.requestAnimationFrame(frame);
 	}
 	window.requestAnimationFrame(frame);
+}
+Game.prototype.renderHUD = function(){
 }
 
 window.addEventListener('load', function(){
