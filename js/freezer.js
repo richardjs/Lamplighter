@@ -20,11 +20,8 @@ Freezer.prototype.update = function(delta){
 };
 Freezer.prototype.check = function(){
 	var toFreeze = [];
-	var count = 0;
 	Object.keys(this.entities).forEach(function(group){
 		this.entities[group].forEach(function(entity){
-			// For now, lamps need to be left out, so roads show up
-			count++;
 			if(entity.group == 'roads'){
 				return;
 			}
