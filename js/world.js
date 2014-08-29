@@ -11,10 +11,10 @@ function World(game){
 		'blobs': []
 	};
 
-	// Scatter bushes around the world (stub)
-	for(var i = 0; i < 300; i++){
-		var x = Math.random()*4000 - 2000;
-		var y = Math.random()*4000 - 2000;
+	// Scatter bushes around the world
+	for(var i = 0; i < BUSH_COUNT; i++){
+		var x = Math.random()*BUSH_SPREAD - BUSH_SPREAD/2;
+		var y = Math.random()*BUSH_SPREAD - BUSH_SPREAD/2;
 		this.add(new Bush(this.game, x, y), 'bushes');
 	}
 
