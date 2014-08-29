@@ -10,6 +10,12 @@ function Lampstand(game, x, y){
 	});
 	this.onFire = false;
 	this.fireballTimer = 0;
+
+	this.game.world.add(new Road(
+		game,
+		0, 0,
+		this.x, this.y
+	), 'roads');
 }
 Lampstand.prototype = Object.create(Entity.prototype);
 Lampstand.prototype.constructor = Lampstand;
@@ -39,12 +45,6 @@ Lampstand.prototype.update = function(delta){
 	}
 }
 Lampstand.prototype.render = function(canvas, ctx){
-	ctx.strokeStyle = '#320';
-	ctx.lineWidth = 25;
-	ctx.beginPath();
-	ctx.moveTo(0, 0);
-	ctx.lineTo(this.x, this.y);
-	ctx.stroke();
 	Entity.prototype.render.call(this, canvas, ctx);
 }
 Lampstand.prototype.setOnFire = function(){

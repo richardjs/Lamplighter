@@ -25,7 +25,7 @@ Freezer.prototype.check = function(){
 		this.entities[group].forEach(function(entity){
 			// For now, lamps need to be left out, so roads show up
 			count++;
-			if(entity.group == 'lamps'){
+			if(entity.group == 'roads'){
 				return;
 			}
 			var diffX = Math.abs(this.player.x - entity.x);
@@ -54,7 +54,7 @@ Freezer.prototype.check = function(){
 	}.bind(this));
 }
 Freezer.prototype.shouldFreeze = function(entity){
-	var diffX = Math.abs(this.player.x - entity.x);
-	var diffY = Math.abs(this.player.y - entity.y);
+	var diffX = Math.abs(this.player.x - entity.x) - entity.lumens;
+	var diffY = Math.abs(this.player.y - entity.y) - entity.lumens;
 	return diffX > this.xFreezeDistance || diffY > this.yFreezeDistance;
 };

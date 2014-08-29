@@ -2,10 +2,13 @@
 
 function World(game){
 	this.game = game;
+	// We need to add this here, so created entities can use it right away
+	this.game.world = this;
 
 	this.entities = {
-		'lamps': [],
+		'roads': [],
 		'bushes': [],
+		'lamps': [],
 		'playerWeapons': [],
 		'player': [],
 		'blobs': []
