@@ -16,15 +16,26 @@ function Player(game){
 }
 Player.prototype = Object.create(Entity.prototype);
 Player.prototype.constructor = Player;
+Player.prototype.weaponOrigin = function(){
+	var vectorX = PLAYER_WEAPON_SPAWN_DISTANCE_X;
+	var vectorY = PLAYER_WEAPON_SPAWN_DISTANCE_Y;
+	var offsetX = vectorX*Math.cos(this.angle) - vectorY*Math.sin(this.angle);
+	var offsetY = vectorX*Math.sin(this.angle) + vectorY*Math.cos(this.angle);
+	return {
+		x: this.x + offsetX,
+		y: this.y + offsetY
+	}
+}
 Player.prototype.shootFlame = function(){
 	if(this.level - this.damage < 0){
 		return;
 	}
+	var weaponOrigin = this.weaponOrigin();
 	var spread = Math.random()*FLAME_SPREAD - FLAME_SPREAD/2;
 	this.game.world.add(new Flare(
 		this.game,
-		this.x,
-		this.y,
+		weaponOrigin.x,
+		weaponOrigin.y,
 		this.angle + spread,
 		FLAME_SPEED,
 		FLAME_LUMENS,
@@ -35,10 +46,11 @@ Player.prototype.shootFireball = function(targetX, targetY){
 	if(this.level - this.damage < -1){
 		return;
 	}
+	var weaponOrigin = this.weaponOrigin();
 	this.game.world.add(new Fireball(
 		this.game,
-		this.x,
-		this.y,
+		weaponOrigin.x,
+		weaponOrigin.y,
 		targetX,
 		targetY
 	));
