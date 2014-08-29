@@ -18,6 +18,8 @@ function Game(canvas){
 	this.controller = new Controller(this);
 	this.collider = new Collider(this);
 	this.spawner = new Spawner(this);
+	this.freezer = new Freezer(this);
+	this.freezer.check();
 
 	var lastTime = 0;
 	var fpsTime = 0;
@@ -31,19 +33,32 @@ function Game(canvas){
 		game.controller.update(delta);
 		game.collider.update(delta);
 		game.spawner.update(delta);
+		game.freezer.update(delta);
 
 		game.world.render(game.canvas, game.ctx);
 
-		fpsThisSecond++;
-		fpsTime += delta;
-		if(fpsTime > 1000){
-			fpsTime -= 1000;
-			fpsLastSecond = fpsThisSecond;
-			fpsThisSecond = 0;
+		if(DEBUG){
+			fpsThisSecond++;
+			fpsTime += delta;
+			if(fpsTime > 1000){
+				fpsTime -= 1000;
+				fpsLastSecond = fpsThisSecond;
+				fpsThisSecond = 0;
+			}
+			game.ctx.font = '20px courier';
+			game.ctx.fillStyle = '#fff';
+			game.ctx.fillText(fpsLastSecond + ' FPS', 10, 30);
+
+			var entityCount = 0;
+			Object.keys(game.world.entities).forEach(function(group){
+				entityCount += game.world.entities[group].length;
+			});
+			game.ctx.font = '14px courier';
+			game.ctx.fillText(
+				entityCount + ' entities (' + game.freezer.frozen.length + ' frozen)',
+				10, 50
+			);
 		}
-		game.ctx.font = '20px courier';
-		game.ctx.fillStyle = '#fff';
-		game.ctx.fillText(fpsLastSecond + ' FPS', 10, 30);
 
 		window.requestAnimationFrame(frame);
 	}
