@@ -9,6 +9,10 @@ function Game(canvas){
 	window.addEventListener('resize', function(){
 		game.canvas.width = window.innerWidth;
 		game.canvas.height = window.innerHeight;
+
+		// Update freeze distance
+		game.freezer.xFreezeDistance = FREEZER_MARGIN + window.innerWidth/2;
+		game.freezer.yFreezeDistance = FREEZER_MARGIN + window.innerHeight/2;
 	});
 	this.ctx = canvas.getContext('2d');
 

@@ -40,6 +40,7 @@ var BLOB_SPAWN_MIN_DISTANCE = 100;
 var BLOB_DO_SPAWN = true;
 
 var FREEZER_DELAY = 1000;
+var FREEZER_MARGIN = 100; // Added to half screen width or height
 
 function setPlayerLevel(level){
 	switch(level){

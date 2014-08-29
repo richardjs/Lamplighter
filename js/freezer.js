@@ -7,6 +7,9 @@ function Freezer(game){
 	this.entities = this.game.world.entities;
 	this.frozen = [];
 	this.timer = FREEZER_DELAY;
+
+	this.xFreezeDistance = FREEZER_MARGIN + window.innerWidth/2;
+	this.yFreezeDistance = FREEZER_MARGIN + window.innerHeight/2;
 }
 Freezer.prototype.update = function(delta){
 	if(this.timer < 0){
@@ -53,5 +56,5 @@ Freezer.prototype.check = function(){
 Freezer.prototype.shouldFreeze = function(entity){
 	var diffX = Math.abs(this.player.x - entity.x);
 	var diffY = Math.abs(this.player.y - entity.y);
-	return diffX > 1000 || diffY > 1000;
+	return diffX > this.xFreezeDistance || diffY > this.yFreezeDistance;
 };
