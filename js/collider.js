@@ -23,7 +23,7 @@ Collider.prototype.update = function(delta){
 		this.entities.blobs.forEach(function(blob){
 			if(weapon.collideTest(blob)){
 				this.game.world.remove(weapon);
-				blob.explode();
+				blob.hit();
 			}
 		}.bind(this));
 	}.bind(this));

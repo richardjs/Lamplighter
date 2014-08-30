@@ -44,8 +44,12 @@ Blob.prototype.render = function(canvas, ctx){
 		this, canvas, ctx, this.imageAngle, this.imageScale
 	);
 }
-Blob.prototype.explode = function(){
-	this.game.world.remove(this);
+Blob.prototype.hit = function(){
+	this.size -= BLOB_HIT_DAMAGE;
+	this.imageScale = this.size / this.image.width;
+	if(this.size < BLOB_MIN_SIZE){
+		this.game.world.remove(this);
+	}
 }
 Blob.prototype.stick = function(){
 	this.stuck = true;
