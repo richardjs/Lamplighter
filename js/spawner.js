@@ -8,7 +8,7 @@ function Spawner(game){
 }
 Spawner.prototype.update = function(delta){
 	if(BLOB_DO_SPAWN){
-	if(this.blobSpawnTimer <= 0){
+		if(this.blobSpawnTimer <= 0){
 			var relativeX = Math.random()*(BLOB_SPAWN_MAX_DISTANCE - BLOB_SPAWN_MIN_DISTANCE) + BLOB_SPAWN_MIN_DISTANCE;
 			if(Math.random() < .5){
 				relativeX *= -1;

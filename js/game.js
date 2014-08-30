@@ -25,6 +25,10 @@ function Game(canvas){
 	this.freezer = new Freezer(this);
 	this.freezer.check();
 
+	this.won = false;
+	this.winTimer = WIN_DELAY;
+	this.navigatingAway = false;
+
 	var lastTime = 0;
 	var fpsTime = 0;
 	var fpsThisSecond = 0;
@@ -40,6 +44,17 @@ function Game(canvas){
 		game.freezer.update(delta);
 
 		game.world.render(game.canvas, game.ctx);
+
+		if(game.won){
+			if(game.winTimer > 0){
+				game.winTimer -= delta;
+			}
+			document.body.style.opacity = game.winTimer/WIN_DELAY;
+			if(game.winTimer <= 0 && !game.navigatingAway){
+				window.location = 'congrats.html';
+				game.navigatingAway = true;
+			}
+		}
 
 		game.ctx.fillStyle = '#999';
 		game.ctx.font = '12pt arial';
@@ -96,7 +111,22 @@ function Game(canvas){
 	}
 	window.requestAnimationFrame(frame);
 }
-Game.prototype.renderHUD = function(){
+Game.prototype.win = function(){
+	this.won = true;
+	this.world.entities.bushes.forEach(function(bush){
+		if(!bush.onFire){
+			bush.setOnFire();
+		}
+	});
+	this.freezer.frozen.forEach(function(entity){
+		if(entity.group == 'bushes'){
+			if(!entity.onFire){
+				entity.setOnFire();
+			}
+		}
+	});
+	setPlayerLevel(7);
+	document.body.style.background = '#fff';
 }
 
 window.addEventListener('load', function(){

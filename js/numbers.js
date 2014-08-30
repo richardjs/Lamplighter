@@ -51,10 +51,12 @@ var BLOB_DO_SPAWN = true;
 var FREEZER_DELAY = 1000;
 var FREEZER_MARGIN = 100; // Added to half screen width or height
 
+var WIN_DELAY = 7000;
+
 var currentLevel = null;
 function setPlayerLevel(level){
-	if(level > 6){
-		level = 6;
+	if(level > 7){
+		level = 7;
 	}
 	switch(level){
 		case 0:
@@ -230,6 +232,29 @@ function setPlayerLevel(level){
 				BLOB_MAX_SIZE = 80;
 				BLOB_DO_SPAWN = true;
 			}
+
+			break;
+
+		case 7:
+			PLAYER_LUMENS = 135;
+
+			FLAME_DELAY = 25;
+			FLAME_SPREAD = Math.PI/3;
+			FLAME_SPEED = 500;
+			FLAME_LUMENS = 50;
+			FLAME_TTL = 750;
+
+			FIREBALL_DELAY = 500;
+			FIREBALL_SPEED = 1000;
+			FIREBALL_LUMENS = 20;
+			FIREBALL_FLARES = 50;
+			FIREBALL_FLARES_MAX_SPEED = 750;
+			FIREBALL_FLARES_LUMENS = 50;
+			FIREBALL_FLARES_MAX_TTL = 2000;
+
+			LAMPSTAND_LUMENS = 7000;
+
+			BLOB_DO_SPAWN = false;
 
 			break;
 

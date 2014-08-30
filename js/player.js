@@ -59,6 +59,10 @@ Player.prototype.levelUp = function(){
 	this.level++;
 	setPlayerLevel(this.level);
 	this.lumens = PLAYER_LUMENS;
+
+	if(this.level >= 7){
+		this.game.win();
+	}
 };
 Player.prototype.hurt = function(){
 	if(this.level - this.damage > -1){
