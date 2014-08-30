@@ -11,6 +11,13 @@ function Controller(game){
 
 	this.fireballTimer = 0;
 
+	this.keyStates = {
+		left: false,
+		right: false,
+		up: false,
+		down: false
+	}
+
 	document.addEventListener('mousemove', function(event){
 		this.game.player.angle = Math.atan2(
 			event.pageY - this.game.canvas.height/2,
@@ -50,16 +57,16 @@ function Controller(game){
 		var c = String.fromCharCode(event.keyCode);
 		switch(c){
 			case 'W':
-				this.game.player.dy = -PLAYER_SPEED;
+				this.keyStates.up = true;
 				break;
 			case 'S':
-				this.game.player.dy = PLAYER_SPEED;
+				this.keyStates.down = true;
 				break;
 			case 'A':
-				this.game.player.dx = -PLAYER_SPEED;
+				this.keyStates.left = true;
 				break;
 			case 'D':
-				this.game.player.dx = PLAYER_SPEED;
+				this.keyStates.right = true;
 				break;
 			default:
 				return;
@@ -71,24 +78,16 @@ function Controller(game){
 		var c = String.fromCharCode(event.keyCode);
 		switch(c){
 			case 'W':
-				if(this.game.player.dy === -PLAYER_SPEED){
-					this.game.player.dy = 0;
-				}
+				this.keyStates.up = false;
 				break;
 			case 'S':
-				if(this.game.player.dy === PLAYER_SPEED){
-					this.game.player.dy = 0;
-				}
+				this.keyStates.down = false;
 				break;
 			case 'A':
-				if(this.game.player.dx === -PLAYER_SPEED){
-					this.game.player.dx = 0;
-				}
+				this.keyStates.left = false;
 				break;
 			case 'D':
-				if(this.game.player.dx === PLAYER_SPEED){
-					this.game.player.dx = 0;
-				}
+				this.keyStates.right = false;
 				break;
 			default:
 				return;
@@ -97,6 +96,21 @@ function Controller(game){
 	}.bind(this));
 }
 Controller.prototype.update = function(delta){
+	this.game.player.dx = 0;
+	this.game.player.dy = 0;
+	if(this.keyStates.up){
+		this.game.player.dy -= PLAYER_SPEED;
+	}
+	if(this.keyStates.down){
+		this.game.player.dy += PLAYER_SPEED;
+	}
+	if(this.keyStates.left){
+		this.game.player.dx -= PLAYER_SPEED;
+	}
+	if(this.keyStates.right){
+		this.game.player.dx += PLAYER_SPEED;
+	}
+
 	if(this.flameTimer > 0){
 		this.flameTimer -= delta;
 	}
