@@ -99,7 +99,7 @@ function setPlayerLevel(level){
 
 			if(currentLevel < 1){
 				BLOB_SPAWN_MAX_DELAY = 3500;
-				BLOB_SPAWN_MIN_DELAY = 1000;
+				BLOB_SPAWN_MIN_DELAY = 1500;
 				BLOB_DO_SPAWN = true;
 			}
 
@@ -123,8 +123,8 @@ function setPlayerLevel(level){
 			FIREBALL_FLARES_MAX_TTL = 650;
 
 			if(currentLevel < 2){
-				BLOB_SPAWN_MAX_DELAY = 3000;
-				BLOB_SPAWN_MIN_DELAY = 750;
+				BLOB_SPAWN_MAX_DELAY = 3750;
+				BLOB_SPAWN_MIN_DELAY = 1000;
 				BLOB_DO_SPAWN = true;
 			}
 
