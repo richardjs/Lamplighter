@@ -175,6 +175,7 @@ function setPlayerLevel(level){
 			if(currentLevel < 4){
 				BLOB_SPAWN_MAX_DELAY = 1500;
 				BLOB_SPAWN_MIN_DELAY = 500;
+				BLOB_MAX_SIZE = 60;
 				BLOB_DO_SPAWN = true;
 			}
 
@@ -200,6 +201,7 @@ function setPlayerLevel(level){
 			if(currentLevel < 5){
 				BLOB_SPAWN_MAX_DELAY = 1000;
 				BLOB_SPAWN_MIN_DELAY = 250;
+				BLOB_MAX_SIZE = 70;
 				BLOB_DO_SPAWN = true;
 			}
 
@@ -225,6 +227,7 @@ function setPlayerLevel(level){
 			if(currentLevel < 6){
 				BLOB_SPAWN_MAX_DELAY = 500;
 				BLOB_SPAWN_MIN_DELAY = 100;
+				BLOB_MAX_SIZE = 80;
 				BLOB_DO_SPAWN = true;
 			}
 
