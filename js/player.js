@@ -43,7 +43,7 @@ Player.prototype.shootFlame = function(){
 	), 'playerWeapons');
 };
 Player.prototype.shootFireball = function(targetX, targetY){
-	if(this.level - this.damage < -1){
+	if(this.level - this.damage < 0){
 		return;
 	}
 	var weaponOrigin = this.weaponOrigin();
