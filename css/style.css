@@ -7,6 +7,10 @@ body{
 a{
 	color: #636;
 }
+a:hover{
+	color: #f36;
+	text-decoration: none;
+}
 
 hr{
 	border-color: #322;
