@@ -2,43 +2,54 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<style>
-			body{
-				background: #000;
-				margin: 0px;
-			}
-			canvas{
-				display: block;
-			}
-		</style>
+		<title>Lamplighter</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
-		<canvas id="screen"></canvas>
+		<div class="container">
+			<p style="margin-top: 20px"><span class="lead">No one remembers a time when
+			the lamps were alight.</span> Myths of the past speak of blazing fire, and
+			a world bathed in light, but that time has long passed. Now darkness covers 
+			the land, and creatures of shadow rule.</p>
 
-		<div style="display:none">
-			<img src="img/player.png" id="playerImage">
-			<img src="img/fireburst.png" id="flareImage">
-			<img src="img/fireball.png" id="fireballImage">
-			<img src="img/bush.png" id="bushImage">
-			<img src="img/lampstand_lit.png" id="lampstandLitImage">
-			<img src="img/lampstand_unlit.png" id="lampstandUnlitImage">
-			<img src="img/blob.png" id="blobImage">
+			<p>No one takes the legends of old seriously. A world of light and
+			warmth is too happy&mdash;too perfect&mdash;to actually exist. And regardless
+			of whether it existed at some point long in the past, it certainly is lost now.
+			The lamps are dead, the fires are out, and the dark is all that remains.</p>
+
+			<p>So say the people living in the darkness...</p>
+
+			<p>But they are wrong. You know better. And you have something they do not:
+			<strong>fire</strong>. And with that, light and warmth. While most have given up
+			on hope, there are a few who have not. These few studied the ancient ways,
+			and found a light in the darkness. Fire still exists in the world, and can be drawn
+			upon as a source of power. And with that power, the shadows can be lifted.</p>
+
+			<p>And today is a day of flame. You stand at the crossroads, and the paths to the
+			seven lamps are before you. With each lamp you light, your power will grow and the
+			grip of darkness will weaken. Light all seven lamps, and the darkness will
+			be driven away. Light will return to the world.</p>
+
+			<p>But the darkness stands to oppose you. As you light the lamps, you will draw its
+			attention, and if it catches you, it will ensnare you and purge the light from you. But do
+			not fear; it cannot win. If you lose yourself to the darkness, return to a lit lamp,
+			and you will be restored. You will not be overcome.</p>
+
+			<p>Lamplighter, now is the time of your labor.</p>
+
+			<h2><a href="game.html">Begin</a></h2>
+
+			<hr>
+
+			<h3>Controls:</h3>
+			<ul class="list-unstyled">
+				<li><strong>WASD</strong> &mdash; move</li>
+				<li><strong>Left click (hold)</strong> &mdash; shoot flame</li>
+				<li><strong>Right click</strong> &mdash; shoot fireball at cursor's position</li>
+			</ul>
+
+			<p><a href="credits.html">Credits</a></p>
 		</div>
-
-		<script src="js/numbers.js"></script>
-		<script src="js/entity.js"></script>
-		<script src="js/player.js"></script>
-		<script src="js/flare.js"></script>
-		<script src="js/fireball.js"></script>
-		<script src="js/bush.js"></script>
-		<script src="js/lamp.js"></script>
-		<script src="js/road.js"></script>
-		<script src="js/blob.js"></script>
-		<script src="js/world.js"></script>
-		<script src="js/controller.js"></script>
-		<script src="js/collider.js"></script>
-		<script src="js/spawner.js"></script>
-		<script src="js/freezer.js"></script>
-		<script src="js/game.js"></script>
 	</body>
 </html>
