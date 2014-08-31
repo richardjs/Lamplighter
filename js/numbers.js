@@ -1,6 +1,6 @@
 'use strict';
 
-var DEBUG = true;
+var DEBUG = false;
 
 var PLAYER_SPEED = 65;
 var PLAYER_LUMENS = 65;
